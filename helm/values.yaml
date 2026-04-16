@@ -1,0 +1,17 @@
+# longhorn-scheduler
+# Copyright (c) 2026-present NAVER Corp.
+# Apache-2.0
+
+# No default image is provided. Build your own using the Dockerfile and set repository and tag accordingly.
+image:
+  repository: your-registry/longhorn-scheduler
+  tag: latest
+  pullPolicy: IfNotPresent
+namespace: longhorn-system
+schedulerName: longhorn-scheduler
+replicaCount: 2
+plugin:
+  nodeReservationTimeoutSeconds: 10
+verbosity: 4
+
+resources: {}

@@ -1,0 +1,10 @@
+# binary
+longhorn-scheduler
+
+# IDE
+.idea/
+.vscode/
+.claude/
+
+# OS
+.DS_Store

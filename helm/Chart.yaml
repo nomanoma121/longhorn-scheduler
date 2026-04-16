@@ -1,0 +1,10 @@
+# longhorn-scheduler
+# Copyright (c) 2026-present NAVER Corp.
+# Apache-2.0
+
+apiVersion: v2
+name: longhorn-scheduler
+description: Longhorn-aware Kubernetes scheduler plugin
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

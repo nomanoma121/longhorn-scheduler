@@ -1,0 +1,39 @@
+# longhorn-scheduler
+# Copyright (c) 2026-present NAVER Corp.
+# Apache-2.0
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.schedulerName }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.schedulerName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.schedulerName }}
+    spec:
+      serviceAccountName: {{ .Values.schedulerName }}
+      containers:
+        - name: scheduler
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - /longhorn-scheduler
+            - --config=/etc/kubernetes/scheduler-config.yaml
+            - --leader-elect=true
+            - --leader-elect-resource-name={{ .Values.schedulerName }}
+            - --leader-elect-resource-namespace={{ .Values.namespace }}
+            - --v={{ .Values.verbosity }}
+          resources: {{ toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: config
+              mountPath: /etc/kubernetes
+      volumes:
+        - name: config
+          configMap:
+            name: {{ .Values.schedulerName }}
