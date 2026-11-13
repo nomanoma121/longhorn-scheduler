@@ -2,9 +2,9 @@
 # Copyright (c) 2026-present NAVER Corp.
 # Apache-2.0
 
-# No default image is provided. Build your own using the Dockerfile and set repository and tag accordingly.
+# Built by .github/workflows/image.yml in the nomanoma121 fork.
 image:
-  repository: your-registry/longhorn-scheduler
+  repository: ghcr.io/nomanoma121/longhorn-scheduler
   tag: latest
   pullPolicy: IfNotPresent
 namespace: longhorn-system
