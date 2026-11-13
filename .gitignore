@@ -4,7 +4,9 @@ longhorn-scheduler
 # IDE
 .idea/
 .vscode/
-.claude/
+.claude/*
+!.claude/settings.json
+!.claude/hooks/
 
 # OS
 .DS_Store
