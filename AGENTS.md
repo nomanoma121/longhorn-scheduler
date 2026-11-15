@@ -45,4 +45,5 @@ git merge upstream/main   # into local main, then push to origin
   - `main` push → `latest`, `main`, `sha-<short>`
   - `v*` tag push → `X.Y.Z`, `X.Y`
   - PRs → build only, no push
-- Helm chart in `helm/` defaults to the GHCR image above.
+- `.github/workflows/chart.yml` — on `v*` tag, pushes the chart to
+  `oci://ghcr.io/nomanoma121/charts/longhorn-scheduler` (version = appVersion = image tag).

@@ -2,10 +2,9 @@
 # Copyright (c) 2026-present NAVER Corp.
 # Apache-2.0
 
-# Built by .github/workflows/image.yml in the nomanoma121 fork.
 image:
   repository: ghcr.io/nomanoma121/longhorn-scheduler
-  tag: latest
+  tag: ""
   pullPolicy: IfNotPresent
 namespace: longhorn-system
 schedulerName: longhorn-scheduler
