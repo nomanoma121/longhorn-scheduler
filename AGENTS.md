@@ -45,4 +45,14 @@ git merge upstream/main   # into local main, then push to origin
   - `main` push → `latest`, `main`, `sha-<short>`
   - `v*` tag push → `X.Y.Z`, `X.Y`
   - PRs → build only, no push
-- Helm chart in `helm/` defaults to the GHCR image above.
+- `.github/workflows/chart.yml` — `helm lint`/`template` on PRs and `main`;
+  on `v*` tag push, packages `helm/` with `version` = `appVersion` = tag
+  (without `v`) and pushes to `oci://ghcr.io/nomanoma121/charts/longhorn-scheduler`.
+  - `image.tag` defaults to the chart `appVersion`, so chart `X.Y.Z` deploys image `X.Y.Z`.
+  - Chart lives under `charts/` to avoid colliding with the image package name.
+- Release = push a `v*` tag; image and chart are published together:
+
+  ```bash
+  git tag v0.1.0 && git push origin v0.1.0
+  helm install longhorn-scheduler oci://ghcr.io/nomanoma121/charts/longhorn-scheduler --version 0.1.0
+  ```
